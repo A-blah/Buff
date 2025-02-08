@@ -2,7 +2,7 @@
 Part-Time Job Portal
 
 Overview
-The Part-Time Job Portal is a web-based platform designed to connect employers with job seekers looking for part-time opportunities. Employers can post jobs, while workers can browse available jobs and apply for them seamlessly.
-This user-friendly website allows employers to easily post job listings tailored for part-time roles.They can filter jobs based on their preferences, such as industry, location, and type of work. Once they identify a position that appeals to them, applicants can apply quickly through the platform.This streamlined process benefits both parties, making it simpler for employers to find the right staff and for workers to discover suitable employment options. The profit for the admin is by taking a small percentage from the employers while they post for the job .
 
-Overall, the Part-Time Job Portal creates an efficient environment for job matching in the part-time job market.
+The Part-Time Job Portal is a profit-driven web platform created to link employers with individuals seeking part-time employment opportunities. This platform allows employers to easily post job listings. At the same time, job seekers can explore various available positions that fit their schedules. They can also apply for these jobs directly through the user-friendly application provided by the site.
+Employers have the convenience of paying the selected salary within a time limit upon posting their job details. This payment goes to an account managed by the admin of the portal. A small portion of this payment is deducted as profit for the service provided. The remaining amount is then allocated to the employee who gets hired. This straightforward payment structure ensures that both employers and employees benefit from the process, simplifying the transactional nature of part-time hiring.
+
