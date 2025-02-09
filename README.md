@@ -20,13 +20,25 @@ Posting Job
 Employers can post job vacancies.
 Job postings include job title, description,  live location,duration.
 obs are stored in a database and displayed for workers to view.
+After registering  the employer will be directed to page where qr code of admin is present for payment
 
 WORKER DASHBOARD
 
 Workers can browse available jobs posted by employers.
 Has the provision to filter jobs based on city, time and salary.
 Jobs display details like title, description, location, and number of vacancies.
-Workers can apply for a job until vacancies are filled. Once its filled , the apply button will be disabled..
+Workers can apply for a job until vacancies are filled. Once its filled , the apply button will be disabled.
+
+THIRD-PARTY VERIFICATION SYSTEM
+
+The business address and tax id entered are validated using a third-party verification like clearbit  for legitimacy which further enhances trust and security .
+
+APPLICATION SYSTEM
+
+
+
+
+
 
 
 
