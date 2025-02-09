@@ -1,12 +1,31 @@
 # Buff
-Part-Time Job Portal
 
-Overview
 
-The Part-Time Job Portal is a profit-driven web platform created to link employers with individuals seeking part-time employment opportunities. This platform allows employers to easily post job listings. At the same time, job seekers can explore various available positions that fit their schedules. They can also apply for these jobs directly through the user-friendly application provided by the site.
-Employers have the convenience of paying the selected salary within a time limit upon posting their job details. This payment goes to an account managed by the admin of the portal. A small portion of this payment is deducted as profit for the service provided. The remaining amount is then allocated to the employee who gets hired. This straightforward payment structure ensures that both employers and employees benefit from the process, simplifying the transactional nature of part-time hiring.
+**PART-TIME JOB PORTAL**
 
-Features
+TEAM NAME : BUFF
+
+TEAM MEMBERS 
+
+ATHENA P DINESH -(SOE)CUSAT
+MARIYAM -(SOE)CUSAT
+ANUSREE.P-(SOE)CUSAT
+
+PROJECT LINK :
+
+PROJECT DESCRIPTION :
+
+The Part-Time Job Portal is a profit-driven platform connecting employers with job seekers for part-time opportunities. Employers can post job listings and pay the designated salary upfront, which is held by the admin. A small service fee is deducted, and the remaining amount is allocated to the hired employee. Job seekers can explore and apply for suitable positions through a user-friendly interface. This structured payment system ensures a seamless and efficient hiring process.
+
+PROBLEM STATEMENT 
+problem:-
+College students struggle to find legitimate, well-paying part-time jobs due to unverified employers, low wages, and payment issues. Traditional job search methods, such as local services and informal referrals, often lead to unreliable work opportunities and delayed or unfair payments. Employers face challenges in hiring temporary manpower efficiently. Existing platforms lack proper verification, leading to fraud and unreliable transactions.
+solution :-
+This platform ensures verified job listings, fair wages, and transparent payments, connecting employers with college students seeking reliable part-time work.The platform ensures a trusted marketplace for part-time jobs by verifying employers through third-party checks, guaranteeing legitimate job listings. It offers higher-than-local payment rates and a transparent payment system that ensures timely, reliable payments. By streamlining job matching and application processes, the platform connects college students with well-paying, verified job opportunities, eliminating the issues of fraud, low wages, and payment delays.
+
+
+
+TECHNICAL 
 
 EMPLOYER DASHBOARD  
 
@@ -36,6 +55,39 @@ The business address and tax id entered are validated using a third-party verifi
 APPLICATION SYSTEM
 
 
+Workers can apply for a job
+The number of vacancies are updated upn application submission 
+
+TECH STACK
+Frontend : HTML,CSS,JAVASCRIPT
+Backened : Node.js, Express.js,json
+Libraries: Express.js (web framework for Node.js),Nodemon ,EJS,Body-Parser ,File System Module (fs)
+
+PROJECT STRUCTURE
+
+part-time-job-portal/
+│── public/
+│   ├── mmm.css
+│   ├── payment.css
+|   |--script.js
+│   ├── style.css
+│   ├── style.css
+│── app.js
+│── models/
+│   ├── Job.jsson
+│── package.json
+│── package-lockjson
+----views/
+│   ├── employer-dashboard.html
+│   ├── worker-dashboard.html
+│   ├── index.html
+
+SCREENSHOTS
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
 
 
 
