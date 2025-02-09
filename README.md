@@ -34,11 +34,12 @@ Security Features
 Validation of business using Clearbit (fetches business details based on domain & tax info)
 Business Address verification .
 Once the verification process is completed , then only the employer can register for hiring.
+A location field is given for employer to insert the location of work . This location will be shown in google map by using © OpenStreetMap contributors
 
 Posting Job
 Employers can post job vacancies.
 Job postings include job title, description,  live location,duration.
-obs are stored in a database and displayed for workers to view.
+datas are stored in a database and displayed for workers to view.
 After registering  the employer will be directed to page where qr code of admin is present for payment
 
 WORKER DASHBOARD
@@ -53,12 +54,12 @@ THIRD-PARTY VERIFICATION SYSTEM
 The business address and tax id entered are validated using a third-party verification like clearbit  for legitimacy which further enhances trust and security .
 
 APPLICATION SYSTEM
-
-
+A location field is given  in the employer dashboard which shows the area of work(© OpenStreetMap contributors).
 Workers can apply for a job
 The number of vacancies are updated upn application submission 
 
 TECH STACK
+Languages used:-
 Frontend : HTML,CSS,JAVASCRIPT
 Backened : Node.js, Express.js,json
 Libraries: Express.js (web framework for Node.js),Nodemon ,EJS,Body-Parser ,File System Module (fs)
