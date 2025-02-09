@@ -26,7 +26,7 @@ WORKER DASHBOARD
 Workers can browse available jobs posted by employers.
 Has the provision to filter jobs based on city, time and salary.
 Jobs display details like title, description, location, and number of vacancies.
-Workers can apply for a job until vacancies are filled. Once its filled , the apply button will be disabled.
+Workers can apply for a job until vacancies are filled. Once its filled , the apply button will be disabled..
 
 
 
