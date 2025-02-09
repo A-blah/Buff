@@ -41,7 +41,7 @@ app.get('/empdashboard', (req, res) => {
         res.render('worker-dashboard', { jobs });
     });
 });
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index.ejs');
 });
 
