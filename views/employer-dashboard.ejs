@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard</title>
+    <link rel="stylesheet" href="mmm.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Disabled register button */
+        #register-btn:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+
+        /* Blurred sections */
+        .blurred {
+            filter: blur(-0.1px);
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* QR Code Container */
+        .qr-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style2.css">
+
+    <header>
+        <h1>Employer Dashboard</h1>
+        <nav>
+            <a href="/index">Home</a>
+            <a href="/empdashboard">Worker Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Employer Registration Section -->
+        <section class="employer-registration">
+            <h2>Employer Registration</h2>
+            <form id="employer-form">
+                <label for="business-name">Business Name:</label>
+                <input type="text" id="business-name" name="business-name" required><br>
+
+                <label for="tax-id">Tax ID:</label>
+                <input type="text" id="tax-id" name="tax-id" required>
+                <button type="button" onclick="verifyTaxId()">Verify Tax ID</button>
+                <span id="tax-id-status"></span><br>
+
+                <label for="business-address">Business Address:</label>
+                <input type="text" id="business-address" name="business-address" required>
+                <button type="button" onclick="verifyAddress()">Verify Address</button>
+                <span id="address-status"></span><br>
+
+                <button type="submit" id="register-btn" disabled>Register</button>
+            </form>
+        </section>
+
+        <!-- Post a New Job Section -->
+        <section class="post-job blurred" id="job-post">
+            <h2>Post a New Job</h2>
+            <form id="job-form" action="/submit-job" method="POST">
+                <label for="job-title">Job Title:</label>
+                <input type="text" id="job-title" name="job-title" required><br>
+        
+                <label for="job-description">Job Description:</label>
+                <textarea id="job-description" name="job-description" required></textarea><br>
+        
+                <label for="job-location">Enter Job Location:</label>
+                <input type="text" id="location-input" name="job-location" placeholder="Enter location"><br>
+                <button type="button" onclick="geocodeLocation()">Set Location</button>
+        
+                <div id="map" class="blurred"></div>
+        
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+        
+                <button type="submit">Post Job</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Modal for Error Notification -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Verification Needed</h2>
+            <p>You need to verify your Tax ID and Business Address before you can register.</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var modal = document.getElementById("error-modal");
+        var span = document.getElementsByClassName("close")[0];
+
+        document.getElementById('employer-form').addEventListener('submit', function(event) {
+            if (!document.getElementById('tax-id').dataset.verified || !document.getElementById('business-address').dataset.verified) {
+                event.preventDefault();
+                modal.style.display = "block";
+            }
+        });
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function enableRegisterButton() {
+            if (document.getElementById('tax-id').dataset.verified === "true" && document.getElementById('business-address').dataset.verified === "true") {
+                document.getElementById('register-btn').disabled = false;
+                removeBlur();
+            } else {
+                document.getElementById('register-btn').disabled = true;
+            }
+        }
+
+        function verifyTaxId() {
+            var taxId = document.getElementById('tax-id').value;
+            if (taxId === "12345") {
+                document.getElementById('tax-id-status').innerText = 'Invalid Tax ID.';
+                document.getElementById('tax-id').dataset.verified = false;
+            } else {
+                document.getElementById('tax-id-status').innerText = 'Tax ID verified.';
+                document.getElementById('tax-id').dataset.verified = true;
+            }
+            enableRegisterButton();
+        }
+
+        function verifyAddress() {
+            var address = document.getElementById('business-address').value;
+            if (address.toLowerCase() === "japan") {
+                document.getElementById('address-status').innerText = 'Invalid Address.';
+                document.getElementById('business-address').dataset.verified = false;
+            } else {
+                document.getElementById('address-status').innerText = 'Address verified.';
+                document.getElementById('business-address').dataset.verified = true;
+            }
+            enableRegisterButton();
+        }
+
+        function removeBlur() {
+            document.getElementById("job-post").classList.remove("blurred");
+            document.getElementById("map").classList.remove("blurred");
+        }
+
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker;
+
+        function geocodeLocation() {
+            var location = document.getElementById('location-input').value;
+
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${location}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        var lat = data[0].lat, lon = data[0].lon;
+
+                        if (marker) map.removeLayer(marker);
+                        marker = L.marker([lat, lon]).addTo(map)
+                            .bindPopup(`Job Location: ${location}`).openPopup();
+
+                        map.setView([lat, lon], 13);
+                        document.getElementById("latitude").value = lat;
+                        document.getElementById("longitude").value = lon;
+                    } else alert("Location not found.");
+                });
+        }
+    </script>
+</body>
+</html>
+
